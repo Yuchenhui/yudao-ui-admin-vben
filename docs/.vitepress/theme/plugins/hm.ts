@@ -1,6 +1,7 @@
 import { inBrowser } from 'vitepress';
 
-const SITE_ID = '2e443a834727c065877c01d89921545e';
+// 百度统计已禁用，如需启用请填入自己的统计 ID
+const SITE_ID = '';
 
 declare global {
   interface Window {
@@ -9,6 +10,10 @@ declare global {
 }
 
 function registerAnalytics() {
+  // 如果没有配置统计 ID，则不进行设置
+  if (!SITE_ID) {
+    return;
+  }
   window._hmt = window._hmt || [];
   const script = document.createElement('script');
   script.innerHTML = `var _hmt = _hmt || [];
